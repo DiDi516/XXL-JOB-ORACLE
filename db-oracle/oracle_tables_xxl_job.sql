@@ -171,10 +171,10 @@ COMMENT ON COLUMN xxl_job_lock.lock_name IS '锁名称';
 
 --==========================================================================
 
-INSERT INTO xxl_job_group(id, app_name, title, sort, address_type, address_list) VALUES (1, 'xxl-job-executor-sample', '示例执行器', 1, 0, NULL);
-INSERT INTO xxl_job_info(id, job_group, job_cron, job_desc, add_time, update_time, author, alarm_email, executor_route_strategy, executor_handler, executor_param, executor_block_strategy, executor_timeout, executor_fail_retry_count, glue_type, glue_source, glue_remark, glue_updatetime, child_jobid) VALUES (1, 1, '0 0 0 * * ? *', '测试任务1', '2018-11-03 22:21:31', '2018-11-03 22:21:31', 'XXL', '', 'FIRST', 'demoJobHandler', '', 'SERIAL_EXECUTION', 0, 0, 'BEAN', '', 'GLUE代码初始化', '2018-11-03 22:21:31', '');
-INSERT INTO xxl_job_user(id, username, password, role, permission) VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL);
-INSERT INTO xxl_job_lock ( lock_name) VALUES ( 'schedule_lock');
+INSERT INTO XXL_JOB_GROUP (ID, APP_NAME, TITLE, SORT, ADDRESS_TYPE, ADDRESS_LIST) VALUES (23, 'test-execute', 'test-execute', 1, 0, '127.0.0.1:9999');
+INSERT INTO XXL_JOB_INFO (ID, JOB_GROUP, JOB_CRON, JOB_DESC, ADD_TIME, UPDATE_TIME, AUTHOR, ALARM_EMAIL, EXECUTOR_ROUTE_STRATEGY, EXECUTOR_HANDLER, EXECUTOR_PARAM, EXECUTOR_BLOCK_STRATEGY, EXECUTOR_TIMEOUT, EXECUTOR_FAIL_RETRY_COUNT, GLUE_TYPE, GLUE_SOURCE, GLUE_REMARK, GLUE_UPDATETIME, CHILD_JOBID, TRIGGER_STATUS, TRIGGER_LAST_TIME, TRIGGER_NEXT_TIME) VALUES (21, 23, '0/5 * * * * ? *', '测试', TO_DATE('2019-08-28 14:27:27', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-08-28 14:27:27', 'YYYY-MM-DD HH24:MI:SS'), '胡一兰', null, 'FIRST', 'TestJob', null, 'SERIAL_EXECUTION', 0, 0, 'BEAN', null, 'GLUE代码初始化', TO_DATE('2019-08-28 14:27:27', 'YYYY-MM-DD HH24:MI:SS'), null, 0, 0, 0);
+INSERT INTO XXL_JOB_USER (ID, USERNAME, PASSWORD, ROLE, PERMISSION) VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 1, null);
+INSERT INTO XXL_JOB_LOCK ( lock_name) VALUES ( 'schedule_lock');
 
 commit;
 
