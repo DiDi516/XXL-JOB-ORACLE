@@ -46,13 +46,9 @@
 		UPDATE xxl_job_group
 		SET app_name = #{appName},
 			title = #{title},
-			sort = #{order}
-			<if test="addressType != null and addressType != ''">
-				, address_type = #{addressType}
-			</if>
-			<if test="addressList != null and addressList != ''">
-				, address_list = #{addressList}
-			</if>
+			sort = #{order},
+			address_type = #{addressType, jdbcType=VARCHAR},
+			address_list = #{addressList, jdbcType=VARCHAR}
 		WHERE id = #{id}
 	</update>
 

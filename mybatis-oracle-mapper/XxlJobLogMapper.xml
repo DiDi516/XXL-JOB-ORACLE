@@ -152,27 +152,13 @@
 	<update id="updateTriggerInfo" >
 		UPDATE xxl_job_log
 		SET
-			<if test="triggerTime != null">
-				trigger_time= #{triggerTime},
-			</if>
-			<if test="triggerCode != null and triggerCode != ''">
-				trigger_code= #{triggerCode},
-			</if>
-			<if test="triggerMsg != null and triggerMsg != ''">
-				trigger_msg= #{triggerMsg},
-			</if>
-			<if test="executorAddress != null and executorAddress != ''">
-				executor_address= #{executorAddress},
-			</if>
-			<if test="executorHandler != null and executorHandler != ''">
-				executor_handler=#{executorHandler},
-			</if>
-			<if test="executorParam != null and executorParam != ''">
-				executor_param= #{executorParam},
-			</if>
-			<if test="executorShardingParam != null and executorShardingParam != ''">
-				executor_sharding_param= #{executorShardingParam},
-			</if>
+			trigger_time= #{triggerTime, jdbcType=TIMESTAMP},
+			trigger_code= #{triggerCode, jdbcType=VARCHAR},
+			trigger_msg= #{triggerMsg, jdbcType=VARCHAR},
+			executor_address= #{executorAddress, jdbcType=VARCHAR},
+			executor_handler=#{executorHandler, jdbcType=VARCHAR},
+			executor_param= #{executorParam, jdbcType=VARCHAR},
+			executor_sharding_param= #{executorShardingParam, jdbcType=VARCHAR},
 			executor_fail_retry_count= #{executorFailRetryCount}
 		WHERE id= #{id}
 	</update>
@@ -252,7 +238,7 @@
 		SELECT id FROM xxl_job_log
 		WHERE NOT (
 			(trigger_code in (0, 200) and handle_code = 0)
-			ORfindFailJobLogIds
+			OR
 			(handle_code = 200)
 		)
 		AND alarm_status = 0

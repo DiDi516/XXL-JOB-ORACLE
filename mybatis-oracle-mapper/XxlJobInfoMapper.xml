@@ -185,28 +185,18 @@
 			job_desc = #{jobDesc},
 			update_time = SYSDATE,
 			author = #{author},
-			<if test="alarmEmail != null and alarmEmail != ''">
-                alarm_email = #{alarmEmail},
-            </if>
+			alarm_email = #{alarmEmail, jdbcType=VARCHAR},
 			executor_route_strategy = #{executorRouteStrategy},
-			<if test="executorHandler != null and executorHandler != ''">
-                executor_handler = #{executorHandler},
-            </if>
-            <if test="executorParam != null and executorParam != ''">
-                executor_param = #{executorParam},
-            </if>
+			executor_handler = #{executorHandler, jdbcType=VARCHAR},
+			executor_param = #{executorParam, jdbcType=VARCHAR},
 			executor_block_strategy = #{executorBlockStrategy},
 			executor_timeout = ${executorTimeout},
 			executor_fail_retry_count = ${executorFailRetryCount},
 			glue_type = #{glueType},
-            <if test="glueSource != null and glueSource != ''">
-                glue_source = #{glueSource},
-            </if>
+			glue_source = #{glueSource, jdbcType=VARCHAR},
 			glue_remark = #{glueRemark},
 			glue_updatetime = #{glueUpdatetime},
-			<if test="childJobId != null and childJobId != ''">
-                child_jobid = #{childJobId},
-            </if>
+			child_jobid = #{childJobId, jdbcType=VARCHAR},
 			trigger_status = #{triggerStatus},
 			trigger_last_time = #{triggerLastTime},
 			trigger_next_time = #{triggerNextTime}

@@ -86,9 +86,7 @@
 			<if test="password != null and password != ''">
 				password = #{password},
 			</if>
-			<if test="permission != null and permission != ''">
-				permission = #{permission},
-			</if>
+			permission = #{permission, jdbcType=VARCHAR},
 			role = #{role}
 		WHERE id = #{id}
 	</update>
